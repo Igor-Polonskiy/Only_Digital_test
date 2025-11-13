@@ -1,0 +1,69 @@
+.main {
+	font-family: 'PT Sans', sans-serif;
+	margin: 0 auto;
+	max-width: 1440px;
+	min-width: 300px;
+	border-left: 1px solid var(--line-color);
+	border-right: 1px solid var(--line-color);
+	background: linear-gradient(var(--line-color), var(--line-color)) no-repeat center/1px 100%;
+
+	@media (max-width: 768px) {
+		border-left: none;
+		border-right: none;
+		background: none;
+	}
+}
+
+.historic-dates {
+  position: relative;
+  min-height: 1080px;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &__heading {
+    position: absolute; // для десктопа
+    margin: 0;
+    padding-top: 170px;
+    padding-left: 80px;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 120%;
+    color: var(--font-main-color);
+    max-width: 353px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 120px;
+      background: linear-gradient(180deg, #3877EE, #EF5DA8);
+      bottom: 10px;
+      left: -1px;
+    }
+  }
+
+  // Правила только для мобильных устройств
+  @media (max-width: 768px) {
+    min-height: auto;
+    padding-bottom: 13px;
+    min-height: 100vh;
+
+    &__heading {
+      position: relative; // делаем header релейтив для мобильных
+      padding-top: 59px;
+      padding-left: 15px;
+	  margin-bottom: 56px;
+	  font-size: 20px;
+    width: 100px;
+
+      &::before {
+        display: none; // скрываем декоративную линию
+      }
+    }
+  }
+}
+
+
+

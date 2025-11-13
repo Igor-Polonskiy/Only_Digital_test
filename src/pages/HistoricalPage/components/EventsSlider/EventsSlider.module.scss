@@ -1,0 +1,178 @@
+.container {
+	margin: 56px 80px 104px;
+	order: 2;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+
+	@media (max-width: 768px) {
+		order: 1;
+		margin: 85px 20px 0;
+		min-height: 250px;
+		display: block;
+
+		.swiper {
+			border-top: 1px solid #C7CDD9;
+			padding-top: 20px;
+			min-height: 217px;
+		}
+	}
+}
+
+.show {
+	opacity: 1;
+
+	@media (max-width: 768px) {
+		animation: slideToUp 300ms ease-in-out;
+	}
+}
+
+.mobileTitle {
+	margin: 0 0 50px;
+	padding-bottom: 20px;
+	font-size: 14px;
+	font-weight: 700;
+	color: var(--font-main-color);
+	display: none;
+	position: relative;
+
+	@media (max-width: 768px) {
+		display: block;
+
+		&::before {
+			content: "";
+			position: absolute;
+			top: 50px;
+			left: 0;
+			width: 100%;
+			height: 1px;
+			background: var(--line-color);
+			z-index: 1;
+		}
+	}
+}
+
+.btn {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border: none;
+	border-radius: 50%;
+	background: #fff;
+	box-shadow: 0 0 15px rgba(56, 119, 238, 0.1);
+	cursor: pointer;
+	padding: 0 10px 10px 0;
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		border: solid var(--font-year-color);
+		border-width: 0 2px 2px 0;
+	}
+
+	&:disabled {
+		display: none;
+	}
+
+	@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+		display: none;
+
+		&::before {
+			position: relative;
+		}
+	}
+}
+
+.btnPrev {
+	left: 20px;
+	transform: rotate(135deg);
+}
+
+.btnNext {
+	right: 20px;
+	transform: rotate(-45deg);
+}
+
+.eventsControlButtons {
+	order: 3;
+	display: none;
+
+	@media (hover: none) and (pointer: coarse), (max-width: 768px) {
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		gap: 10px;
+		margin-top: 20px;
+	}
+}
+
+.eventsButton {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	border: none;
+	background-color: var(--font-main-color);
+	cursor: pointer;
+	opacity: 0.4;
+	margin-bottom: 18.67px;
+	padding: 0;
+
+	&.eventsButtonActive {
+		opacity: 1;
+	}
+}
+
+.slide {
+	max-width: 320px;
+	min-height: 220px;
+	width: 100%;
+
+	@media (max-width: 768px) {
+		min-width: 166px;
+		min-height: 0;
+		opacity: 0.4;
+	}
+}
+
+/* Глобально активный слайд для мобильных */
+@media (max-width: 768px) {
+	:global(.swiper-slide-active) {
+		opacity: 1 !important;
+	}
+}
+
+.year {
+	margin: 0 0 15px 0;
+	font-family: 'Bebas Neue', sans-serif;
+	font-weight: 400;
+	font-size: 25px;
+	line-height: 120%;
+	text-transform: uppercase;
+	color: var(--font-year-color);
+
+	@media (max-width: 768px) {
+		font-size: 16px;
+	}
+}
+
+.description {
+	margin: 0;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 150%;
+	color: var(--font-main-color);
+
+	@media (max-width: 768px) {
+		font-size: 14px;
+		line-height: 145%;
+	}
+}
+
+@keyframes slideToUp {
+	0% {
+		transform: translateY(10px);
+	}
+}
