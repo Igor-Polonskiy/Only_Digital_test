@@ -1,14 +1,20 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { DefinePlugin } = require("webpack");
+const packageJson = require("./package.json");
+
+const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
     entry: "./src/index.tsx",
-    mode: "development",
+    mode: isProd ? "production" : "development",
 
     output: {
         filename: "bundle.js",
         path: path.resolve(__dirname, "dist"),
         clean: true,
+        // Важный момент: устанавливаем publicPath для GitHub Pages
+        publicPath: isProd ? `${packageJson.homepage}/` : "/",
     },
 
     resolve: {
@@ -51,10 +57,14 @@ module.exports = {
         ],
     },
 
-
     plugins: [
         new HtmlWebpackPlugin({
             template: "./public/index.html",
+        }),
+        new DefinePlugin({
+            "process.env.PUBLIC_URL": JSON.stringify(
+                isProd ? packageJson.homepage : ""
+            ),
         }),
     ],
 
@@ -62,5 +72,6 @@ module.exports = {
         port: 4000,
         open: true,
         hot: true,
+        historyApiFallback: true, // чтобы React Router работал на GH Pages
     },
 };

@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "webpack serve --mode development",
     "build": "webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/Igor-Polonskiy/Only_Digital_test/issues"
   },
-  "homepage": "https://github.com/Igor-Polonskiy/Only_Digital_test#readme",
+  "homepage": "https://igor-polonskiy.github.io/Only_Digital_test",
   "dependencies": {
     "gsap": "^3.13.0",
     "react": "^19.2.0",
@@ -29,6 +31,7 @@
     "@types/react": "^19.2.3",
     "@types/react-dom": "^19.2.3",
     "css-loader": "^7.1.2",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.4",
     "sass": "^1.94.0",
     "sass-loader": "^16.0.6",
